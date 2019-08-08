@@ -1,0 +1,12 @@
+{
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Menlo, Monaco, 'Arial', monospace",
+    "terminal.integrated.fontSize": 15,
+    "[python]": {
+        "editor.rulers": [
+            72,
+            79
+        ]
+    }
+}
