@@ -7,4 +7,3 @@ def reverse(str):
 def slice_reverse(str):
     str = str[::-1]
     return str
-
