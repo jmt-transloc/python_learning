@@ -1,18 +1,21 @@
 # results
 from selenium.webdriver.common.by import By
+from pypom import Page
 
-
-class GoogleResultsPage:
-    RESULT_DIVS = (By.CLASS_NAME, 'rc')
-    SEARCH_FIELD = (By.NAME, 'q')
+class GoogleResults(Page):
+    _result_divs = (By.CLASS_NAME, 'rc')
+    _search_field = (By.NAME, 'q')
 
     def __init__(self, browser):
         self.browser = browser
 
+    @property
+    def search_field(self):
+        return self.browser.find_element(*self._search_field)
+
     def result_div_count(self):
-        result_divs = self.browser.find_elements(*self.RESULT_DIVS)
+        result_divs = self.browser.find_elements(*self._result_divs)
         return len(result_divs)
 
-    def search_input_value(self):
-        search_input = self.browser.find_element(*self.SEARCH_FIELD)
-        return search_input.get_attribute('value')
+    def search_input_value(self, search_field):
+        return search_field.get_attribute('value')
