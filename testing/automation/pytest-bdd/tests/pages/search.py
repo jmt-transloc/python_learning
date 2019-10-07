@@ -15,6 +15,9 @@ class GoogleSearch(Page):
     def __init__(self, browser):
         self.browser = browser
 
+    # 
+    # Page Methods
+    # 
     def load(self):
         self.browser.get(self._url)
 
