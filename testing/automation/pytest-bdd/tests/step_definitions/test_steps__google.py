@@ -1,7 +1,4 @@
-import pytest
-
 from pytest_bdd import scenarios, given, when, then, parsers
-from selenium import webdriver
 from pages.search import GoogleSearch
 from pages.results import GoogleResults
 
@@ -9,6 +6,7 @@ from pages.results import GoogleResults
 # Scenarios
 #
 scenarios('../features/google.feature')
+
 
 #
 # Background:
@@ -18,6 +16,7 @@ def navigate_to_page(browser):
     search_page = GoogleSearch(browser)
     search_page.load()
 
+
 #
 # Test: Page Title Matches the Page
 #
@@ -25,7 +24,8 @@ def navigate_to_page(browser):
 def compare_title(browser):
     search_page = GoogleSearch(browser)
     assert search_page.get_title() == 'Google'
-    
+
+
 #
 # Test: Process a Google Search
 #
@@ -33,6 +33,7 @@ def compare_title(browser):
 def search(browser, phrase):
     search_page = GoogleSearch(browser)
     search_page.search(phrase)
+
 
 @then(parsers.parse('"{phrase}" should appear in the results field'))
 def verify_search_results(browser, phrase):

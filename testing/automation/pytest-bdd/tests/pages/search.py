@@ -1,7 +1,7 @@
-# search
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from pypom import Page
+
 
 class GoogleSearch(Page):
     test_var = 'Google Search'
@@ -9,10 +9,8 @@ class GoogleSearch(Page):
     _search_input = (By.NAME, 'q')
     _search_button = (By.CSS_SELECTOR, f'[aria-label="{test_var}"]')
 
-    #
-    # @param browser - A reference to the web driver browser instance
-    #
     def __init__(self, browser):
+        super().__init__(browser)
         self.browser = browser
 
     # 
@@ -25,10 +23,11 @@ class GoogleSearch(Page):
         title = self.browser.title
         return title
 
-    #
-    # @param phrase - A search phrase (text or int)
-    #
     def search(self, phrase):
+        """
+        An input method for Google's search field
+        :param phrase: A search phrase (Untyped)
+        """
         self.browser.find_element(*self._search_button)
         search_input = self.browser.find_element(*self._search_input)
         search_input.send_keys(phrase + Keys.RETURN)

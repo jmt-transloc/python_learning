@@ -1,10 +1,9 @@
-# conftest - Configurations for all tests within the suite
 import json
 import pytest
 
 from selenium.webdriver import Chrome
 
-CONFIG_PATH = 'tests/config.json'
+CONFIG_PATH = '../tests/config.json'
 DEFAULT_WAIT_TIME = 10
 SUPPORTED_BROWSERS = ['chrome']
 
